@@ -5,7 +5,7 @@ android简单的链式线程切换工具类，简单适用，可用于学习线�
 详细教程请看博客：http://blog.csdn.net/guohaiyang1992/article/details/70665374 
 
 简单的使用教程如下：
-```
+```java
 TaskManager.getNewInstance().addTask(new Task() {
             @Override
             public void runInTask() {
