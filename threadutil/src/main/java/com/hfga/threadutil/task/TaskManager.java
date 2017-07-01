@@ -1,4 +1,4 @@
-package com.hfga.threadutil;
+package com.hfga.threadutil.task;
 
 /**
  * Created by guohaiyang on 2017/4/10.
@@ -7,9 +7,9 @@ package com.hfga.threadutil;
 public class TaskManager {
 
     //第一个任务
-    private Task firstTask = null;
+    private AbsTask firstTask = null;
     //上一个任务
-    private Task lastTask = null;
+    private AbsTask lastTask = null;
 
     private TaskManager() {
 
@@ -24,11 +24,11 @@ public class TaskManager {
         lastTask = null;
     }
 
-    public TaskManager addTask(Task task) {
+    public TaskManager onNext(AbsTask task) {
         if (firstTask == null) {
             lastTask = firstTask = task;
         } else {
-            lastTask.addNextTask(task);
+            lastTask.onNext(task);
             lastTask = task;
         }
 
@@ -36,7 +36,6 @@ public class TaskManager {
     }
 
     public void start() {
-
         if (firstTask != null) {
             firstTask.run();
         } else {
